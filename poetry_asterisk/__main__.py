@@ -19,7 +19,7 @@ def main() -> None:
         "--exclude_packages",
         type=str,
         required=False,
-        help="--exclude pytest,ruff  ! without spaces   ",
+        help="""USAGE: --exclude_packages "pytest,ruff"  !without spaces""",
     )
 
     arg_parser.add_argument(
@@ -27,7 +27,15 @@ def main() -> None:
         "--path_to_pyproject",
         type=Path,
         required=False,
-        help="--path_to_pyproject ./pyproject.toml",
+        help="USAGE: --path_to_pyproject ./pyproject.toml",
+    )
+
+    arg_parser.add_argument(
+        "-g",
+        "--exclude_groups",
+        type=str,
+        required=False,
+        help="""USAGE: --exclude_groups "dev,link"  !without spaces""",
     )
 
     parsed_args = arg_parser.parse_args()
@@ -36,10 +44,16 @@ def main() -> None:
         if parsed_args.exclude_packages
         else None
     )
+    exclude_groups: set[str] | None = (
+        set(parsed_args.exclude_groups.split(","))
+        if parsed_args.exclude_groups
+        else None
+    )
     path_to_pyproject: str | None = parsed_args.path_to_pyproject
 
     PoetryAsteriskProcessor(
         exclude_packages=exclude_packages,
+        exclude_groups=exclude_groups,
         path_to_pyproject=path_to_pyproject,
     ).process_pyproject()
 

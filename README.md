@@ -17,3 +17,17 @@ pip install poetry-asterisk
 
 
 ## Usage
+Just run:
+```
+pasterisk
+```
+
+It has arguments:
+- `exclude_packages`: specify what packages skip. Default: None
+- `exclude_groups`: specify what groups skip (`dev`, `lint`, etc.). Default: None
+- `path_to_pyproject`: path to the pyproject.toml. By default asterisk searches in the root directory.
+
+Advanced example:
+```
+pasterisk --exclude_packages "pytest, orjson" --exclude_groups "list" --path_to_pyproject ./pyproject.toml
+```

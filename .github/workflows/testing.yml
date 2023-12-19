@@ -53,7 +53,7 @@ jobs:
         run: poetry run pytest -vv -n auto --cov="poetry-asterisk" .
       - name: Generate report
         run: poetry run coverage xml
-      - name: Upload coverage reports to Codecov
+      - name: Upload coverage reports to Codecov about poetry-asterisk
         uses: codecov/codecov-action@v3
         if: matrix.os == 'ubuntu-latest' && matrix.py_version == '3.9'
         with:

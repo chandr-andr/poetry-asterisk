@@ -50,7 +50,7 @@ jobs:
       - name: Install deps
         run: poetry install --all-extras
       - name: Run pytest check
-        run: poetry run pytest -vv -n auto --cov="poetry-asterisk" .
+        run: poetry run pytest -vv -n auto --cov="poetry_asterisk" .
       - name: Generate report
         run: poetry run coverage xml
       - name: Upload coverage reports to Codecov about poetry-asterisk

@@ -23,7 +23,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           cache: "poetry"
       - name: Install deps
         run: poetry install --all-extras
@@ -40,20 +40,21 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     runs-on: "${{ matrix.os }}"
     steps:
+      - uses: actions/checkout@v2
       - name: Install poetry
         run: pipx install poetry
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "${{ matrix.py_version }}"
           cache: "poetry"
       - name: Install deps
         run: poetry install --all-extras
       - name: Run pytest check
-        run: poetry run pytest -vv -n auto --cov="poetry-asterisk" .
+        run: poetry run pytest -vv -n auto --cov="poetry_asterisk" .
       - name: Generate report
         run: poetry run coverage xml
-      - name: Upload coverage reports to Codecov
+      - name: Upload coverage reports to Codecov about poetry-asterisk
         uses: codecov/codecov-action@v3
         if: matrix.os == 'ubuntu-latest' && matrix.py_version == '3.9'
         with:

@@ -4,11 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["chandr-andr (Kiselev Aleksandr) <askiselev00@gmail.com>"]
 readme = "README.md"
-packages = [{include = "poetry_asterisk"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-tomlkit = { version = "*", optional=true }
+tomlkit = "*"
 pydantic = "*"
 
 [tool.poetry.group.test.dependencies]

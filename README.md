@@ -4,3 +4,16 @@
 # Poetry-Asterisk
 This library performs auto change dependency version to `"*"`.
 You can specify 3 parameters for detail setup.
+
+## Installation
+You can install this library this way:
+```
+poetry add poetry-asterisk
+```
+or with pip:
+```
+pip install poetry-asterisk
+```
+
+
+## Usage

@@ -1,0 +1,1 @@
+"""Poetry-asterisk package."""

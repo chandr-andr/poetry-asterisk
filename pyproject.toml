@@ -8,7 +8,7 @@ packages = [{include = "poetry_asterisk"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"
-tomlkit = { version = "*", optional=true }
+tomlkit = "*"
 pydantic = "*"
 
 [tool.poetry.group.test.dependencies]

@@ -17,15 +17,6 @@ if sys.platform == "win32":
     )
 
 
-@pytest.fixture(scope="session")
-def anyio_backend() -> str:
-    """Anyio backend.
-
-    :return: backend name.
-    """
-    return "asyncio"
-
-
 @pytest.fixture()
 def test_pyproject_file_name() -> str:
     """Random name for the file with toml file."""

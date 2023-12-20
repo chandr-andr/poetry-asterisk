@@ -29,5 +29,53 @@ It has arguments:
 
 Advanced example:
 ```
-pasterisk --exclude_packages "pytest, orjson" --exclude_groups "list" --path_to_pyproject ./pyproject.toml
+pasterisk --exclude_packages "pytest, orjson" --exclude_groups "lint" --path_to_pyproject ./pyproject.toml
+```
+
+# Example of work
+`pyproject.toml` before update.
+```toml
+[tool.poetry]
+name = "test"
+version = "0.0.1"
+description = ""
+authors = ["awesome man"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+pydantic = "^2.4.2"
+
+[tool.poetry.group.test.dependencies]
+typing-extensions = "^4.8.0"
+pytest = "^7.4.3"
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.1.2"
+```
+
+command:
+```
+pasterisk --exclude_packages "pytest" --exclude_groups "lint"
+```
+
+`pyproject.toml` after update. We didn't touched `pytest` and the whole `lint` group
+```toml
+[tool.poetry]
+name = "test"
+version = "0.0.1"
+description = ""
+authors = ["awesome man"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8.1,<4.0"
+pydantic = "*"
+
+[tool.poetry.group.test.dependencies]
+typing-extensions = "*"
+pytest = "^7.4.3"
+
+[tool.poetry.group.lint.dependencies]
+ruff = "^0.1.2"
 ```

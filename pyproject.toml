@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-asterisk"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["chandr-andr (Kiselev Aleksandr) <askiselev00@gmail.com>"]
 readme = "README.md"
